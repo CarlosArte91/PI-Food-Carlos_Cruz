@@ -1,0 +1,7 @@
+//id -> automatic
+//name
+//image
+//dish Summary
+//health Score
+step to step
+//**diet types** -> relation
