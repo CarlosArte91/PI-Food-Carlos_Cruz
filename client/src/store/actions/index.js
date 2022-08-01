@@ -8,6 +8,7 @@ export const ORDER_RECIPES = 'ORDER_RECIPES';
 export const FILTER_DIET = 'FILTER_DIET';
 export const ORDER_HEALTH_SCORE = 'ORDER_HEALTH_SCORE';
 export const RECIPE_DETAIL = 'RECIPE_DETAIL';
+export const GET_DIETS = 'GET_DIETS';
 
 export function fetchRecipes() {
     return function(dispatch) {
@@ -108,5 +109,17 @@ export function recipesDetails(id) {
                 payload: recipe.data
             });
         })
+    };
+};
+
+export function getDiets() {
+    return function(dispatch) {
+        axios.get(`http://localhost:3001/api/diets`)
+        .then((diets) => {
+            dispatch({
+                type: GET_DIETS,
+                payload: diets.data
+            });
+        });
     };
 };

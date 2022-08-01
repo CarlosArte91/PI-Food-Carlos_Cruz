@@ -3,6 +3,7 @@ import {
     CHANGE_PAGE,
     FETCH_RECIPES,
     FILTER_DIET,
+    GET_DIETS,
     ORDER_HEALTH_SCORE,
     ORDER_RECIPES,
     RECIPE_DETAIL,
@@ -15,6 +16,7 @@ let initialState = {
     recipeDetail: {},
     page: 1,
     newPage: 1,
+    diets: [],
     prueba: 'name="algo"'
 }
 
@@ -65,6 +67,11 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 recipeDetail: action.payload
+            }
+        case GET_DIETS:
+            return {
+                ...state,
+                diets: action.payload
             }
         default:
             return state

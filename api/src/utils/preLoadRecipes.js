@@ -2,7 +2,6 @@ const { Recipe, DietType } = require("../db.js");
 
 async function preLoadRecipes(preRecipes) {
   let dietTypes = await DietType.findAll();
-
   preRecipes.forEach(async (recipe) => {
     let newRecipe = await Recipe.create(recipe);
     let array = [];
@@ -11,66 +10,9 @@ async function preLoadRecipes(preRecipes) {
           if (diet.slice(1) === obj.name.slice(1)) array.push(obj.id);
         });
       });
-        newRecipe.addDietTypes(array);
+      newRecipe.addDietTypes(array);
   });
 }
-
-const preRecipess = [
-  {
-    name: "Pollo apanado",
-    image:
-      "https://www.comidastipicaschilenas.com/wp-content/uploads/2020/06/filetitos-de-pollo-apanado-chileno-2.jpg?ezimgfmt=rs:352x198/rscb1/ng:webp/ngcb1",
-    healthScore: 85,
-    summary: "delicioso pollo apanado",
-    steps: "1 2 3",
-    diets: [1, 3, 6],
-  },
-  {
-    name: "Sancocho de gallina",
-    image:
-      "https://www.guiadelacocina.com/images/stories/2012_05/sancocho-de-gallina.jpg",
-    healthScore: 90,
-    summary: "exquisito sancocho de gallina",
-    steps: "1 2 3",
-    diets: [1, 2, 3],
-  },
-  {
-    name: "Arroz con pollo",
-    image:
-      "http://vamosllegando.com/wp-content/uploads/2021/05/arroz-con-pollo-colombia.jpg",
-    healthScore: 35,
-    summary: "el mejor del mundo",
-    steps: "1 2 3",
-    diets: [1, 6, 5],
-  },
-  {
-    name: "Torta negra de navidad",
-    image:
-      "https://t2.rg.ltmcdn.com/es/posts/2/5/5/torta_de_navidad_o_torta_negra_11552_orig.jpg",
-    healthScore: 50,
-    summary: "exquisita torta navideña",
-    steps: "1 2 3",
-    diets: [4, 6, 3],
-  },
-  {
-    name: "Lasagna",
-    image:
-      "https://media.istockphoto.com/photos/lasagna-traditional-italian-pasta-picture-id1252736340?k=20&m=1252736340&s=612x612&w=0&h=vBPo9vH5zb4v0U3VejpFZr8OmS7dxbYNJzg4ZVYJO9c=",
-    healthScore: 45,
-    summary: "esquisita lasagna",
-    steps: "1 2 3",
-    diets: [2, 5, 6],
-  },
-  {
-    name: "Arroz con leche",
-    image:
-      "https://www.cocinavital.mx/wp-content/uploads/2019/04/como-hacer-arroz-con-leche.jpg",
-    healthScore: 70,
-    summary: "delicioso arroz con leche y uvas",
-    steps: "1 2 3",
-    diets: [6, 2, 1],
-  },
-];
 
 const preRecipes = [
   {
@@ -168,73 +110,73 @@ const preRecipes = [
     ],
     originalId: null,
   },
-  {
-    healthScore: 37,
-    //id: 625478,
-    name: "Snack_Sardines",
-    image: "https://www.kingoscar.com/wp-content/uploads/2016/04/sardine-celery-sticks-768x513.jpg",
-    summary:
-      "Snack_Sardines is a <b>gluten free, dairy free, and pescatarian</b> recipe with 1 servings. One portion of this dish contains about <b>9g of protein</b>, <b>4g of fat</b>, and a total of <b>214 calories</b>. For <b>70 cents per serving</b>, this recipe <b>covers 12%</b> of your daily requirements of vitamins and minerals. Head to the store and pick up apples, quinoa, sardines, and a few other things to make it today. From preparation to the plate, this recipe takes around <b>30 minutes</b>. Similar recipes include .",
-    dishTypes: [
-      "antipasti",
-      "starter",
-      "snack",
-      "appetizer",
-      "antipasto",
-      "hor d'oeuvre",
-    ],
-    diets: ["gluten free", "dairy free", "pescatarian"],
-    steps: "1: Cook Quinoa/-/2: Stir in Apples and Sardines",
-    analyzedInstructions: [
-      {
-        steps: [
-          {
-            number: 1,
-            step: "Cook Quinoa",
-            number: 2,
-            step: "Stir in Apples and Sardines",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    healthScore: 2,
-    //id: 625158,
-    name: "Gluten Free Peanut Butter Brownie Cookies",
-    image: "https://images-gmi-pmc.edge-generalmills.com/880436ce-bcee-4f1e-8933-ab2783fff991.jpg",
-    summary:
-      'The recipe Gluten Free Peanut Butter Brownie Cookies is ready <b>in approximately 20 minutes</b> and is definitely a great <b>gluten free, dairy free, fodmap friendly, and vegetarian</b> option for lovers of American food. This recipe makes 24 servings with <b>121 calories</b>, <b>4g of protein</b>, and <b>7g of fat</b> each. For <b>12 cents per serving</b>, this recipe <b>covers 4%</b> of your daily requirements of vitamins and minerals. If you have egg, brown sugar, peanut butter, and a few other ingredients on hand, you can make it. 1 person has made this recipe and would make it again. It works well as a very affordable dessert. All things considered, we decided this recipe <b>deserves a spoonacular score of 28%</b>. This score is rather bad. Try <a href="https://spoonacular.com/recipes/peanut-butter-brownie-bites-low-carb-and-gluten-free-768038">Peanut Butter Brownie Bites (Low Carb and Gluten Free)</a>, <a href="https://spoonacular.com/recipes/gluten-free-peanut-butter-jelly-brownie-bites-861675">Gluten Free Peanut Butter & Jelly Brownie Bites</a>, and <a href="https://spoonacular.com/recipes/flourless-peanut-butter-kiss-cookies-gluten-free-dairy-free-559252">Flourless Peanut Butter Kiss Cookies ( Gluten-Free, Dairy-Free)</a> for similar recipes.',
-    dishTypes: [
-      "antipasti",
-      "starter",
-      "snack",
-      "appetizer",
-      "antipasto",
-      "hor d'oeuvre",
-    ],
-    diets: [
-      "gluten free",
-      "dairy free",
-      "lacto ovo vegetarian",
-      "fodmap friendly",
-    ],
-    steps: "1: Preheat the oven to 350 degrees F./-/2: Mix all of the ingredients in a stand mixer until well combined.Drop by rounded teaspoonfuls onto a parchment lined baking sheet.Use a fork to press down the cookies and make the cross pattern on top/-/3: Bake for 10 minutes.Allow to cool for 5 minutes on the pan before removing",
-    analyzedInstructions: [
-      {
-        steps: [
-          {
-            number: 1,
-            step: "Preheat the oven to 350 degrees F.",
-            number: 2,
-            step: "Mix all of the ingredients in a stand mixer until well combined.Drop by rounded teaspoonfuls onto a parchment lined baking sheet.Use a fork to press down the cookies and make the cross pattern on top",
-            number: 3,
-            step: "Bake for 10 minutes.Allow to cool for 5 minutes on the pan before removing",
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   healthScore: 37,
+  //   //id: 625478,
+  //   name: "Snack_Sardines",
+  //   image: "https://www.kingoscar.com/wp-content/uploads/2016/04/sardine-celery-sticks-768x513.jpg",
+  //   summary:
+  //     "Snack_Sardines is a <b>gluten free, dairy free, and pescatarian</b> recipe with 1 servings. One portion of this dish contains about <b>9g of protein</b>, <b>4g of fat</b>, and a total of <b>214 calories</b>. For <b>70 cents per serving</b>, this recipe <b>covers 12%</b> of your daily requirements of vitamins and minerals. Head to the store and pick up apples, quinoa, sardines, and a few other things to make it today. From preparation to the plate, this recipe takes around <b>30 minutes</b>. Similar recipes include .",
+  //   dishTypes: [
+  //     "antipasti",
+  //     "starter",
+  //     "snack",
+  //     "appetizer",
+  //     "antipasto",
+  //     "hor d'oeuvre",
+  //   ],
+  //   diets: ["gluten free", "dairy free", "pescatarian"],
+  //   steps: "1: Cook Quinoa/-/2: Stir in Apples and Sardines",
+  //   analyzedInstructions: [
+  //     {
+  //       steps: [
+  //         {
+  //           number: 1,
+  //           step: "Cook Quinoa",
+  //           number: 2,
+  //           step: "Stir in Apples and Sardines",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  // {
+  //   healthScore: 2,
+  //   //id: 625158,
+  //   name: "Gluten Free Peanut Butter Brownie Cookies",
+  //   image: "https://images-gmi-pmc.edge-generalmills.com/880436ce-bcee-4f1e-8933-ab2783fff991.jpg",
+  //   summary:
+  //     'The recipe Gluten Free Peanut Butter Brownie Cookies is ready <b>in approximately 20 minutes</b> and is definitely a great <b>gluten free, dairy free, fodmap friendly, and vegetarian</b> option for lovers of American food. This recipe makes 24 servings with <b>121 calories</b>, <b>4g of protein</b>, and <b>7g of fat</b> each. For <b>12 cents per serving</b>, this recipe <b>covers 4%</b> of your daily requirements of vitamins and minerals. If you have egg, brown sugar, peanut butter, and a few other ingredients on hand, you can make it. 1 person has made this recipe and would make it again. It works well as a very affordable dessert. All things considered, we decided this recipe <b>deserves a spoonacular score of 28%</b>. This score is rather bad. Try <a href="https://spoonacular.com/recipes/peanut-butter-brownie-bites-low-carb-and-gluten-free-768038">Peanut Butter Brownie Bites (Low Carb and Gluten Free)</a>, <a href="https://spoonacular.com/recipes/gluten-free-peanut-butter-jelly-brownie-bites-861675">Gluten Free Peanut Butter & Jelly Brownie Bites</a>, and <a href="https://spoonacular.com/recipes/flourless-peanut-butter-kiss-cookies-gluten-free-dairy-free-559252">Flourless Peanut Butter Kiss Cookies ( Gluten-Free, Dairy-Free)</a> for similar recipes.',
+  //   dishTypes: [
+  //     "antipasti",
+  //     "starter",
+  //     "snack",
+  //     "appetizer",
+  //     "antipasto",
+  //     "hor d'oeuvre",
+  //   ],
+  //   diets: [
+  //     "gluten free",
+  //     "dairy free",
+  //     "lacto ovo vegetarian",
+  //     "fodmap friendly",
+  //   ],
+  //   steps: "1: Preheat the oven to 350 degrees F./-/2: Mix all of the ingredients in a stand mixer until well combined.Drop by rounded teaspoonfuls onto a parchment lined baking sheet.Use a fork to press down the cookies and make the cross pattern on top/-/3: Bake for 10 minutes.Allow to cool for 5 minutes on the pan before removing",
+  //   analyzedInstructions: [
+  //     {
+  //       steps: [
+  //         {
+  //           number: 1,
+  //           step: "Preheat the oven to 350 degrees F.",
+  //           number: 2,
+  //           step: "Mix all of the ingredients in a stand mixer until well combined.Drop by rounded teaspoonfuls onto a parchment lined baking sheet.Use a fork to press down the cookies and make the cross pattern on top",
+  //           number: 3,
+  //           step: "Bake for 10 minutes.Allow to cool for 5 minutes on the pan before removing",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
   {
     healthScore: 5,
     //id: 615387,
@@ -274,37 +216,37 @@ const preRecipes = [
     ],
     originalId: null,
   },
-  {
-    healthScore: 0,
-    //id: 598765,
-    name: "Lill'pertif",
-    image: "https://spoonacular.com/recipeImages/598765-556x370.jpg",
-    summary:
-      "The recipe Lill'pertif could satisfy your Mediterranean craving in about <b>5 minutes</b>. One serving contains <b>163 calories</b>, <b>0g of protein</b>, and <b>3g of fat</b>. For <b>$1.9 per serving</b>, this recipe <b>covers 1%</b> of your daily requirements of vitamins and minerals. This recipe is liked by 11 foodies and cooks. It is a good option if you're following a <b>caveman, gluten free, primal, and fodmap friendly</b> diet. A mixture of vodka, lemon zest, lillet, and a handful of other ingredients are all it takes to make this recipe so scrumptious. A couple people really liked this beverage. All things considered, we decided this recipe <b>deserves a spoonacular score of 7%</b>. This score is very bad (but still fixable). Try  for similar recipes.",
-    dishTypes: ["beverage", "drink"],
-    diets: [
-      "gluten free",
-      "dairy free",
-      "lacto ovo vegetarian",
-      "fodmap friendly",
-      "vegan",
-    ],
-    steps: "1: Fill a rocks glass or large wine glass half full with ice./-/2: Add the Lillet, vermouth and vodka. Stir./-/3: Twist the lemon zest directly over the glass, then drop in. Spear the olive on a pick and drop in.",
-    analyzedInstructions: [
-      {
-        steps: [
-          {
-            number: 1,
-            step: "Fill a rocks glass or large wine glass half full with ice.",
-            number: 2,
-            step: "Add the Lillet, vermouth and vodka. Stir.",
-            number: 3,
-            step: "Twist the lemon zest directly over the glass, then drop in. Spear the olive on a pick and drop in.",
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   healthScore: 0,
+  //   //id: 598765,
+  //   name: "Lill'pertif",
+  //   image: "https://spoonacular.com/recipeImages/598765-556x370.jpg",
+  //   summary:
+  //     "The recipe Lill'pertif could satisfy your Mediterranean craving in about <b>5 minutes</b>. One serving contains <b>163 calories</b>, <b>0g of protein</b>, and <b>3g of fat</b>. For <b>$1.9 per serving</b>, this recipe <b>covers 1%</b> of your daily requirements of vitamins and minerals. This recipe is liked by 11 foodies and cooks. It is a good option if you're following a <b>caveman, gluten free, primal, and fodmap friendly</b> diet. A mixture of vodka, lemon zest, lillet, and a handful of other ingredients are all it takes to make this recipe so scrumptious. A couple people really liked this beverage. All things considered, we decided this recipe <b>deserves a spoonacular score of 7%</b>. This score is very bad (but still fixable). Try  for similar recipes.",
+  //   dishTypes: ["beverage", "drink"],
+  //   diets: [
+  //     "gluten free",
+  //     "dairy free",
+  //     "lacto ovo vegetarian",
+  //     "fodmap friendly",
+  //     "vegan",
+  //   ],
+  //   steps: "1: Fill a rocks glass or large wine glass half full with ice./-/2: Add the Lillet, vermouth and vodka. Stir./-/3: Twist the lemon zest directly over the glass, then drop in. Spear the olive on a pick and drop in.",
+  //   analyzedInstructions: [
+  //     {
+  //       steps: [
+  //         {
+  //           number: 1,
+  //           step: "Fill a rocks glass or large wine glass half full with ice.",
+  //           number: 2,
+  //           step: "Add the Lillet, vermouth and vodka. Stir.",
+  //           number: 3,
+  //           step: "Twist the lemon zest directly over the glass, then drop in. Spear the olive on a pick and drop in.",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
 
 module.exports = {

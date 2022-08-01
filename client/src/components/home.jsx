@@ -4,6 +4,7 @@ import SearchBar from "./searchBar";
 import style from './home.module.css';
 import FilterByDiet from "./filterByDiet";
 import OrderByHealthScore from "./orderByHealthScore";
+import { Link } from "react-router-dom";
 
 export default function Home() {    
     return (
@@ -13,6 +14,9 @@ export default function Home() {
                 <div><Order/></div>
                 <div><OrderByHealthScore/></div>
                 <div><SearchBar/></div>
+                <Link to={'/createNewRecipe'}>
+                    <button>Create new recipe</button>
+                </Link>
             </div>
             <Recipes/>
         </div>

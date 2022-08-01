@@ -1,22 +1,15 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeInput, changePage, filterDiet } from '../store/actions';
+import { changeInput, changePage, filterDiet, getDiets } from '../store/actions';
 
-let array = [
-    "Gluten free",
-    "Dairy free",
-    "Lacto ovo vegetarian",
-    "Vegan",
-    "Paleolithic",
-    "Primal",
-    "Whole 30",
-    "Pescatarian",
-    "Ketogenic",
-    "Fodmap friendly"
-];
 export default function FilterByDiet() {
     const recipes = useSelector((state) => state.filteredRecipes);
-    
+    const diets = useSelector((state) => state.diets);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getDiets());
+    }, []);
 
     function onChangeSelect(theEvent) {
         dispatch(filterDiet(recipes, theEvent.target.value));
@@ -26,12 +19,13 @@ export default function FilterByDiet() {
 
     return (
         <div>
+            <span>Filter by diet</span>
             <select name="selectDiet" onChange={onChangeSelect}>
                 <option></option>
                 {
-                    array.map(diet => {
+                    diets.map(diet => {
                         return (
-                            <option key={diet} value={diet}>{diet}</option>
+                            <option key={diet.id} value={diet.name}>{diet.name}</option>
                         )
                     })
                 }

@@ -1,28 +1,21 @@
 import { Link } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import { recipesDetails } from '../store/actions';
+import style from './recipe.module.css';
 
 export default function Recipe({ id, name, image, diets, healthScore }) {
-    const dispatch = useDispatch();
-
-    let handlerButton = () => {
-        dispatch(recipesDetails(id));
-    }
-
     return (
-        <div>
-            <div>
-                <img src={image} alt="recipe" width='300px'/>
+        <div className={style.container}>
+            <div className={style.image}>
+                <img src={image} alt="recipe"/>
             </div>
             <h3>{name}</h3>
             <h4>{healthScore}</h4>
             {
                 diets.map(diet => {
-                    return <p key={diet}>▸ {diet}</p>
+                    return <p key={diet}>• {diet}</p>
                 })
             }
-            <Link to={'/detail'}>
-                <button onMouseDown={handlerButton}>see more</button>          
+            <Link to={`/detail/${id}`}>
+                <button >see more</button>          
             </Link>
         </div>
     );

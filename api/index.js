@@ -20,13 +20,11 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const { getDiets, recipes } = require('./src/utils/getDiets.js');
-const { preLoadRecipes, preRecipes } = require('./src/utils/preLoadRecipes.js');
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
+conn.sync({ force: true }).then(() => {  
+  server.listen(3001, () => {    
     getDiets(recipes);
-    preLoadRecipes(preRecipes);    
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
