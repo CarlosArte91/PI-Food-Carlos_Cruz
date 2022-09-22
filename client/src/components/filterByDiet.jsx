@@ -18,8 +18,7 @@ export default function FilterByDiet() {
     };
 
     return (
-        <div>
-            <span>Filter by diet</span>
+        <div>            
             <select name="selectDiet" onChange={onChangeSelect}>
                 <option></option>
                 {

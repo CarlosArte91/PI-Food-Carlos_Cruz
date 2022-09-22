@@ -17,7 +17,7 @@ export default function Order() {
 
     return (
         <div>
-            <span>Alphabetical order</span>
+            <span>Alphabetical</span>            
             <select name="selectAlpha" onChange={onSelectChange}>
                 <option></option>
                 <option value={ASCENDING}>Ascending</option>

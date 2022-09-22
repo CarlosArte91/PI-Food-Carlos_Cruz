@@ -5,20 +5,20 @@ const { Recipe, DietType } = require('../db.js');
 
 async function getAllRecipes() {
     try {
-        // let recipesApi = (await axios.get(`${BASE}${ALL_SEARCH}`)).data.results;
-        // recipesApi = recipesApi.map((recipe) => {
-        //     let diets = recipe.diets.map(diet => {
-        //         return diet[0].toUpperCase() + diet.slice(1);
-        //     })
-        //     return {
-        //         id: recipe.id,
-        //         name: recipe.title,
-        //         image: recipe.image,
-        //         healthScore: recipe.healthScore,
-        //         diets
-        //     }
-        // });
-        let recipesApi = [];
+        //let recipesApi = []
+        let recipesApi = (await axios.get(`${BASE}${ALL_SEARCH}`)).data.results;
+        recipesApi = recipesApi.map((recipe) => {
+            let diets = recipe.diets.map(diet => {
+                return diet[0].toUpperCase() + diet.slice(1);
+            })
+            return {
+                id: recipe.id,
+                name: recipe.title,
+                image: recipe.image,
+                healthScore: recipe.healthScore,
+                diets
+            }
+        });
 
         let recipesDB = await Recipe.findAll({
             attributes: ['id', 'name', 'image', 'healthScore'],

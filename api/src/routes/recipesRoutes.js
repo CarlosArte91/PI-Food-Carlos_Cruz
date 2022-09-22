@@ -1,18 +1,25 @@
 const express = require('express');
-const { Recipe } = require('../db.js');
 const getAllRecipes = require('../utils/getAllRecipes.js');
 const getRecipeById = require('../utils/getRecipeById.js');
 const getSearchRecipes = require('../utils/getSearchRecipes.js');
+const postNewRecipe = require('../utils/postNewRecipe.js');
 
 const router = express.Router();
 router.use(express.json());
 
-///////////////////////////////////////////////////////////////////////////
 // Buscar receta por ID
-router.get('/by', async (req, res, next) => {
-    const { id } = req.query; 
-    const recipeId = await getRecipeById(id);
-    res.json(recipeId);
+router.get('/by', (req, res, next) => {
+    try {
+        const { id } = req.query;
+        //const recipeById = 
+        getRecipeById(id)
+        .then(response => {
+            res.json(response);
+        })
+        //res.json(recipeById);        
+    } catch (error) {
+        next(error);
+    }    
 });
 
 
@@ -37,30 +44,8 @@ router.get('/', async (req, res, next) => {
 // Crear una nueva receta
 router.post('/', async (req, res, next) => {
     try {
-        const {
-            name,
-            image,            
-            healthScore,
-            summary,
-            steps,
-            diets
-        } = req.body;
-
-        const [newRecipe, created] = await Recipe.findOrCreate({
-            where: {
-                name
-            },
-            defaults: {
-                name,
-                image,                
-                healthScore,
-                summary,
-                steps
-            }
-        });
-        newRecipe.addDietTypes(diets);
-        if (!created) return res.json({message: 'La receta ya existe'});
-        else return res.json(newRecipe);
+        const newRecipe = await postNewRecipe(req.body);
+        res.json(newRecipe);
     } catch (error) {
         next(error)
     }

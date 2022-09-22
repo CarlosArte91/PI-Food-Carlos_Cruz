@@ -15,12 +15,11 @@ export default function OrderByHealthScore() {
         dispatch(changePage(1));
         dispatch(changeInput(1));
         dispatch(setSelectScore('sel'));
-        console.log(theEvent.target.selected)
     };
     
     return (
         <div>
-            <span>Health score order</span>
+            <span>Health score</span>            
             <select name='selectScore' onChange={onselectChange}>
                 <option ></option>
                 <option value={ASCENDING}>Ascending</option>
