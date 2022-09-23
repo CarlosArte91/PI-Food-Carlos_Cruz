@@ -14,7 +14,7 @@ export default function Recipes() {
     }, []);
 
     const page = useSelector((state) => state.page);
-    const recipesForPage = 7;
+    const recipesForPage = 9;
     const totalPages = Math.ceil(recipes.length / recipesForPage);
     return (
         <div className={style.recipePaginated}>

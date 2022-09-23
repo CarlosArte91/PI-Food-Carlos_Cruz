@@ -10,7 +10,7 @@ export default function LandingPage() {
             </div>
 
             <div className={styles.header}>
-                <h1>¡Welcome to the Food App!</h1>
+                <h1 className={styles.title}>¡Welcome to the Food App!<br></br>by Carlos Cruz</h1>
                 <span>Find your favorites recipes</span>
                 <Link to={'/home'}>
                     <button className={styles.button}>log in</button>

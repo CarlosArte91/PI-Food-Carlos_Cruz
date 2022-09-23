@@ -24,7 +24,7 @@ async function getDiets() {
             };
         });  
         await DietType.bulkCreate(diets);
-        await preLoadRecipes(preRecipes);
+        //await preLoadRecipes(preRecipes);
     } catch (error) {
         console.log(error);
     }

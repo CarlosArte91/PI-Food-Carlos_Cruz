@@ -9,6 +9,10 @@
     padding-bottom: 12%;
 }
 
+.title {
+    margin-bottom: 0;
+}
+
 .container > div {
     display: grid;
     grid-template-rows: 50% 20% 30%;
